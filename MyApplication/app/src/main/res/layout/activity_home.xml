@@ -1,17 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_home"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="be.ucll.mobile.aphasia.HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+<!--    Main layout wrapper
+        Contains 4 Linear layouts
+
+        1. Image to make the app super beautiful
+        2. Logo and name of the application
+        3. Start test intent button
+        4. Menu with items: changing the photo library & details about my results
+ -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_top"
         android:layout_height="wrap_content"
-        android:text="Hello homepage branch!" />
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:title="home"
+        android:titleMargin="?attr/actionBarSize"
+        >
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <!-- Beginning of the logo section -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="30"
+        android:orientation="vertical">
+
+        <ImageView
+            android:src="@drawable/logo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="75dip"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dip"
+            android:textAlignment="center"
+            android:id="@+id/slogan"
+            android:text="Improving the inability\nto comprehend and formulate language"
+            />
+    </LinearLayout>
+    <!-- end of the logo section -->
+
+    <!-- Beginning of the start_test section -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="8"
+        android:paddingLeft="40dip"
+        android:paddingRight="40dip">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:id="@+id/start_test"
+            android:layout_height="50dip"
+            android:background="@drawable/cornered"
+            android:text="start test"
+            />
+        
+    </LinearLayout>
+    <!-- end of the start_test section -->
+
+
+    <!-- Beginning of the menu section -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="20"
+        android:paddingLeft="40dip"
+        android:paddingRight="40dip"
+        android:paddingTop="10dip">
+
+        <Button
+            android:id="@+id/adjust"
+            android:layout_width="0dip"
+            android:layout_height="100dip"
+            android:layout_weight="50"
+            android:text="adjust\nphoto library"
+            android:textSize="12dip"
+            android:textAlignment="viewStart"
+            android:layout_gravity="start"
+            android:paddingLeft="15dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/orange_gradient"
+            android:textColor="#FFF"
+            android:onClick="onStartStopClicked" />
+
+        <Button
+            android:id="@+id/results"
+            android:text="details about\nmy results"
+            android:onClick="onResetClicked"
+            android:layout_width="0dip"
+            android:layout_height="100dip"
+            android:textSize="12dip"
+            android:textAlignment="viewStart"
+            android:layout_gravity="start"
+            android:paddingLeft="15dip"
+            android:layout_weight="50"
+            android:background="@drawable/orange_gradient"
+            android:textColor="#FFF"/>
+
+    </LinearLayout>
+    <!-- end of the menu section -->
+
+</LinearLayout>
