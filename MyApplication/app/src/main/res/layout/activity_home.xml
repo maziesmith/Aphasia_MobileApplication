@@ -15,18 +15,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_top"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:title="home"
-        android:titleMargin="?attr/actionBarSize"
-        >
-
-
-
-    </android.support.v7.widget.Toolbar>
+    <!-- This include creates a consistent menubar over all intents -->
+    <include layout="@layout/toolbar_main"/>
 
     <!-- Beginning of the logo section -->
     <LinearLayout
@@ -69,6 +59,7 @@
             android:layout_height="50dip"
             android:background="@drawable/cornered"
             android:text="start test"
+            android:onClick="openQuizIntent"
             />
         
     </LinearLayout>
@@ -97,12 +88,12 @@
             android:layout_marginRight="5dip"
             android:background="@drawable/orange_gradient"
             android:textColor="#FFF"
-            android:onClick="onStartStopClicked" />
+            android:onClick="openAdjustIntent" />
 
         <Button
             android:id="@+id/results"
             android:text="details about\nmy results"
-            android:onClick="onResetClicked"
+            android:onClick="openResultsIntent"
             android:layout_width="0dip"
             android:layout_height="100dip"
             android:textSize="12dip"
