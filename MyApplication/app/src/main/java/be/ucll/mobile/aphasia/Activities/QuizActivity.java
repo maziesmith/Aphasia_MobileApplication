@@ -88,7 +88,7 @@ public class QuizActivity extends AppCompatActivity{
     }
 
     public void onButtonClick(View v){
-        Intent intent = new Intent(this, Audio_Record.class);
+        Intent intent = new Intent(this, AudioActivity.class);
         startActivity(intent);
     }
 

@@ -21,6 +21,7 @@
         <activity android:name=".Activities.AdjustActivity"></activity>
         <activity android:name=".Activities.ResultsActivity"></activity>
         <activity android:name=".Activities.Audio_Record"></activity>
+        <activity android:name=".Activities.AudioActivity"  android:theme="@android:style/Theme.Holo.Light.Dialog"></activity>
 
     </application>
 
