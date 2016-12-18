@@ -3,7 +3,7 @@
 <!--    Main layout wrapper
         Contains 4 Linear layouts
 
-        1. Image to make the app super beautiful
+        ex1. Image to make the app super beautiful
         2. Logo and name of the application
         3. Start test intent button
         4. Menu with items: changing the photo library & details about my results

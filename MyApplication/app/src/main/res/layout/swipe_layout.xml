@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <TextView
+        android:id="@+id/image_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/oefening"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What do you see on the picture?"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="25dp"/>
+
+    <ImageView
+        android:layout_marginTop="25dp"
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="400px" />
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+
+
+        <TextView
+            android:id="@+id/text"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            ></TextView>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/presence_audio_online"
+            android:id="@+id/imageButton3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="52dp"
+            android:onClick="onButtonClick"/>
+        <TextView
+            android:id="@+id/text2"
+            android:text="Record your answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            ></TextView>
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
