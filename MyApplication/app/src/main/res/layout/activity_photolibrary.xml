@@ -58,7 +58,7 @@
         android:layout_height="100dp"
         android:background="@drawable/button_bg_transparent"
         android:text="+ \n add a photo"
-        android:onClick="openQuizIntent"
+        android:onClick="addPhoto"
         />
 </LinearLayout>
 

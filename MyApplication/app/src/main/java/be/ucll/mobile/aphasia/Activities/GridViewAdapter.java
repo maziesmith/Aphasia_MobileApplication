@@ -2,10 +2,12 @@ package be.ucll.mobile.aphasia.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +42,7 @@ public class GridViewAdapter extends ArrayAdapter {
             holder = new ViewHolder();
             holder.imageTitle = (TextView) row.findViewById(R.id.text);
             holder.image = (ImageView) row.findViewById(R.id.image);
+            holder.deleteButton = (Button) row.findViewById(R.id.buttonDelete) ;
             row.setTag(holder);
         } else {
             holder = (ViewHolder) row.getTag();
@@ -48,11 +51,15 @@ public class GridViewAdapter extends ArrayAdapter {
         ImageItem item = (ImageItem) data.get(position);
         holder.imageTitle.setText(item.getTitle());
         holder.image.setImageBitmap(item.getImage());
+        holder.deleteButton.setTag(item.getPath());
         return row;
     }
 
     static class ViewHolder {
         TextView imageTitle;
         ImageView image;
+        Button deleteButton;
+
+
     }
 }
