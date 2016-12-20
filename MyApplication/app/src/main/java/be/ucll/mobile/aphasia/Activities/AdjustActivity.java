@@ -3,7 +3,6 @@ package be.ucll.mobile.aphasia.Activities;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,17 +13,16 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
+import be.ucll.mobile.aphasia.Model.GridViewAdapter;
+import be.ucll.mobile.aphasia.Model.ImageItem;
 import be.ucll.mobile.aphasia.R;
 
 /**

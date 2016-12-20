@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,7 @@ import be.ucll.mobile.aphasia.Model.AppLog;
 import be.ucll.mobile.aphasia.R;
 
 public class AudioActivity extends Activity {
-    ImageButton b1;
+    Button b1;
     private static final String AUDIO_RECORDER_FILE_EXT_3GP = ".3gp";
     private static final String AUDIO_RECORDER_FILE_EXT_MP4 = ".mp4";
     private static final String AUDIO_RECORDER_FOLDER = "AudioRecorder";
@@ -29,7 +30,7 @@ public class AudioActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.audio_mp4);
-        b1=(ImageButton)findViewById(R.id.button1);
+        b1=(Button)findViewById(R.id.button1);
         b1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -47,6 +48,7 @@ public class AudioActivity extends Activity {
                 return false;
             }
         });
+        setTitle("Hold to record");
     }
 
     private String getFilename(){
@@ -56,8 +58,7 @@ public class AudioActivity extends Activity {
         if(!file.exists()){
             file.mkdirs();
         }
-
-        return (file.getAbsolutePath() + "/" + System.currentTimeMillis() + file_exts[currentFormat]);
+        return (file.getAbsolutePath() + "/" + getIntent().getStringExtra("oefening").replaceAll(" ","") + file_exts[currentFormat]);
     }
 
     private void startRecording(){
@@ -100,6 +101,7 @@ public class AudioActivity extends Activity {
             recorder.release();
 
             recorder = null;
+            this.finish();
         }
     }
 }

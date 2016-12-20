@@ -38,13 +38,7 @@
 
 
 
-        <TextView
-            android:id="@+id/text"
-            android:text=""
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            ></TextView>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -54,14 +48,34 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="52dp"
             android:onClick="onButtonClick"/>
+
         <TextView
             android:id="@+id/text2"
-            android:text="Record your answer"
-            android:layout_width="wrap_content"
+            android:text="Record your answer, you can allways record it again if it fails"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="90dp"
             ></TextView>
+
+        <ImageButton
+            android:id="@+id/nextbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="NEXT"
+            android:onClick="onNextClick"
+            android:layout_marginTop="52dp"
+            app:srcCompat="@android:drawable/ic_media_next" />
+        <ImageButton
+            android:id="@+id/previousbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="PREVIOUS"
+            android:onClick="onPreviousClick"
+            android:layout_marginTop="52dp"
+            app:srcCompat="@android:drawable/ic_media_previous" />
 
 
 

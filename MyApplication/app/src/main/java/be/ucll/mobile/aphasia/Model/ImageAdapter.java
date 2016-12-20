@@ -1,4 +1,4 @@
-package be.ucll.mobile.aphasia.Activities;
+package be.ucll.mobile.aphasia.Model;
 
 import android.content.Context;
 import android.os.Environment;

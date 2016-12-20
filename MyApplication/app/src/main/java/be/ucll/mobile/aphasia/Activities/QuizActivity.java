@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import be.ucll.mobile.aphasia.Model.CustomSwipeAdapter;
-import be.ucll.mobile.aphasia.Model.ImageItem;
+
 import be.ucll.mobile.aphasia.R;
 
 /**
@@ -49,11 +49,6 @@ public class QuizActivity extends AppCompatActivity{
     TextView resultTEXT;
     public static String PACKAGE_NAME;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,22 +59,6 @@ public class QuizActivity extends AppCompatActivity{
         adapter = new CustomSwipeAdapter(this);
         viewPager.setAdapter(adapter);
 
-
-    }
-
-
-
-    private ArrayList<ImageItem> getData() throws IOException {
-        final ArrayList<ImageItem> imageItems = new ArrayList<>();
-        Resources res = getResources(); //if you are in an activity
-        AssetManager am = res.getAssets();
-        String[] imgPath = am.list("images");
-        for (int j = 0; j< imgPath.length; j++) {
-            InputStream is = am.open("images/" + imgPath[j]);
-            Bitmap bitmap = BitmapFactory.decodeStream(is);
-            imageItems.add(new ImageItem(bitmap, imgPath[j]));
-        }
-        return imageItems;
     }
 
     private void setToolbarTitle() {
@@ -89,7 +68,25 @@ public class QuizActivity extends AppCompatActivity{
 
     public void onButtonClick(View v){
         Intent intent = new Intent(this, AudioActivity.class);
-        startActivity(intent);
+
+        int pos = viewPager.getCurrentItem()+1;
+        Log.d("test","Exercise"+pos);
+        intent.putExtra("oefening", "Exercise"+pos);
+        startActivityForResult(intent,100);
+    }
+
+    public void onNextClick(View v) {
+        int currentItem = viewPager.getCurrentItem();
+        viewPager.setCurrentItem(currentItem+1);
+        if(currentItem+1 >= adapter.getCount()){
+            Toast.makeText(QuizActivity.this,"You've reached the end of the test, enjoy the rest of your day!",Toast.LENGTH_LONG).show();
+            Intent i = new Intent(this,HomeActivity.class);
+            startActivity(i);
+        }
+    }
+    public void onPreviousClick(View v) {
+        int currentItem = viewPager.getCurrentItem();
+        viewPager.setCurrentItem(currentItem-1);
     }
 
     public void promptSpeechInput() {
@@ -108,16 +105,8 @@ public class QuizActivity extends AppCompatActivity{
 
     public void onActivityResult(int request_code, int result_code , Intent i){
         super.onActivityResult(request_code,result_code,i);
-        switch(request_code){
-            case 100:   if(result_code==RESULT_OK && i !=null){
-                ArrayList<String> result = i.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                Log.d("jow",result.get(0));
-                resultTEXT = (TextView) findViewById(R.id.text);
-                resultTEXT.setText(result.get(0));
-            }
-                break;
-
-        }
+        TextView text = (TextView) viewPager.findViewById(R.id.text2);
+        text.setText("Answer recorded , go to the next one or record again");
     }
 
 
