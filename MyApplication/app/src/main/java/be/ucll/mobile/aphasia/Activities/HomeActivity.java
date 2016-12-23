@@ -57,6 +57,5 @@ public class HomeActivity extends AppCompatActivity {
         Intent i = new Intent(this, QuizActivity.class);
        i.setAction(Intent.ACTION_VIEW );
         startActivity(i);
-        System.out.println("WOW NO ERROR");
     }
 }

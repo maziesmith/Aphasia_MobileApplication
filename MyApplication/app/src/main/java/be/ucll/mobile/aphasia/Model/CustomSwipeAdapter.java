@@ -1,11 +1,7 @@
 package be.ucll.mobile.aphasia.Model;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Environment;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import be.ucll.mobile.aphasia.R;
@@ -24,20 +19,18 @@ import be.ucll.mobile.aphasia.R;
 
 public class CustomSwipeAdapter extends PagerAdapter {
 
-    private ArrayList<ImageItem> imagelist = getAllImagesInDevice();
-
-    private Context ctx;
+    private ArrayList<ImageItem> images;
     private LayoutInflater layoutInflater;
+    private Context ctx;
 
     public CustomSwipeAdapter(Context ctx){
         this.ctx = ctx;
+        images = ImageLoader.getImages();
     }
-
-
 
     @Override
     public int getCount() {
-       return imagelist.size();
+       return images.size();
     }
 
     @Override
@@ -51,7 +44,7 @@ public class CustomSwipeAdapter extends PagerAdapter {
         View item_view = layoutInflater.inflate(R.layout.swipe_layout,container,false);
             ImageView imageView = (ImageView) item_view.findViewById(R.id.image_view);
             TextView textView = (TextView) item_view.findViewById(R.id.image_count);
-            imageView.setImageBitmap(imagelist.get(position).getImage());
+            imageView.setImageBitmap(images.get(position).getImage());
             int realpos = position + 1;
             textView.setText("Exercise "+realpos);
 
@@ -65,22 +58,6 @@ public class CustomSwipeAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((LinearLayout)object);
-    }
-
-    public ArrayList<ImageItem> getAllImagesInDevice(){
-        final ArrayList<ImageItem> imageItems = new ArrayList<>();
-
-        String path = Environment.getExternalStorageDirectory().toString()+"/Pictures/images";
-        File directory = new File(path);
-        File[] files = directory.listFiles();
-        for (int i = 0; i < files.length; i++)
-        {
-            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-            Bitmap bitmap = BitmapFactory.decodeFile(files[i].getAbsolutePath(),bmOptions);
-            imageItems.add(new ImageItem(bitmap,files[i].getName(),files[i].getAbsolutePath()));
-            Log.d("Files", "FileName:" + files[i].getName());
-        }
-        return imageItems;
     }
 
 }

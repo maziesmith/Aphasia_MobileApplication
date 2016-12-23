@@ -3,37 +3,14 @@ package be.ucll.mobile.aphasia.Activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.AudioFormat;
-import android.media.AudioRecord;
-import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
-import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Locale;
 
 import be.ucll.mobile.aphasia.Model.CustomSwipeAdapter;
 
@@ -44,6 +21,7 @@ import be.ucll.mobile.aphasia.R;
  */
 
 public class QuizActivity extends AppCompatActivity{
+
     ViewPager viewPager;
     CustomSwipeAdapter adapter;
     TextView resultTEXT;
@@ -68,7 +46,6 @@ public class QuizActivity extends AppCompatActivity{
 
     public void onButtonClick(View v){
         Intent intent = new Intent(this, AudioActivity.class);
-
         int pos = viewPager.getCurrentItem()+1;
         Log.d("test","Exercise"+pos);
         intent.putExtra("oefening", "Exercise"+pos);
