@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,7 +16,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
+import be.ucll.mobile.aphasia.Model.AphasiaApplication;
 import be.ucll.mobile.aphasia.Model.GridViewAdapter;
 import be.ucll.mobile.aphasia.Model.ImageLoader;
 import be.ucll.mobile.aphasia.R;
@@ -26,6 +33,7 @@ public class AdjustActivity extends AppCompatActivity {
     private Button deleteButton;
     private static final int SELECT_PICTURE = 1;
     private String selectedImagePath;
+    private static String path = AphasiaApplication.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath() + "/images";
 
 
     @Override
@@ -53,12 +61,10 @@ public class AdjustActivity extends AppCompatActivity {
         File file = new File(delete.getTag().toString());
         file.delete();
 
-        gridView = (GridView) findViewById(R.id.gridView);
         gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, ImageLoader.getImages());
         gridView.setAdapter(gridAdapter);
-
-
     }
+
     public void addPhoto(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -69,31 +75,50 @@ public class AdjustActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == SELECT_PICTURE) {
-                Uri selectedImageUri = data.getData();
-                selectedImagePath = getPath(selectedImageUri);
+                Uri uri = data.getData();
+                String filename = getFileName(uri);
+                System.out.println(filename);
+
+                try {
+                    FileInputStream in = (FileInputStream) getContentResolver().openInputStream( data.getData());
+                    OutputStream out = new FileOutputStream(new File(path + "/" + filename));
+                    int read = 0;
+                    byte[] bytes = new byte[1024];
+                    while ((read = in.read(bytes)) != -1) {
+                        out.write(bytes, 0, read);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+
+                gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, ImageLoader.getImages());
+                gridView.setAdapter(gridAdapter);
             }
         }
     }
-    public String getPath(Uri uri) {
-        // just some safety built in
-        if( uri == null ) {
-            // TODO perform some logging or show user feedback
-            return null;
+
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
         }
-        // try to retrieve the image from the media store first
-        // this will only work for images selected from gallery
-        String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
-        if( cursor != null ){
-            int column_index = cursor
-                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            String path = cursor.getString(column_index);
-            cursor.close();
-            return path;
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
         }
-        // this is our fallback here
-        return uri.getPath();
+        return result;
     }
 
 }

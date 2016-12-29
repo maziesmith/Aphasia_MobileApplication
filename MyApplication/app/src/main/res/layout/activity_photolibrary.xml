@@ -7,31 +7,6 @@
     <!-- This include creates a consistent menubar over all intents -->
     <include layout="@layout/toolbar_main"/>
 
-
-    <!-- Here you can set all content -->
-   <!-- <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="30"
-        android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello photolibrary branch!" />
-
-    </LinearLayout>
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="90dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
-        />-->
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
@@ -40,38 +15,32 @@
 
         <Button
             android:id="@+id/add_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/addbutton"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:textColor="#fff"
             android:text="+"
             android:textSize="20dip"
             android:onClick="addPhoto"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentRight="true" />
 
-            />
-
-
-    <GridView
-        android:id="@+id/gridView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:columnWidth="150dp"
-        android:drawSelectorOnTop="true"
-        android:gravity="center"
-        android:numColumns="auto_fit"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="5dp"
-        android:focusable="true"
-        android:requiresFadingEdge="vertical"
-/>
-
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:horizontalSpacing="20dp"
+            android:columnWidth="150dp"
+            android:drawSelectorOnTop="true"
+            android:gravity="center"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="20dp"
+            android:focusable="true"
+            android:requiresFadingEdge="vertical" />
 
 </RelativeLayout>
-
-
 </LinearLayout >
