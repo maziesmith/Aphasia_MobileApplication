@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class GridViewAdapter extends ArrayAdapter {
     private Context context;
     private int layoutResourceId;
     private ArrayList data = new ArrayList();
+
 
     public GridViewAdapter(Context context, int layoutResourceId, ArrayList data) {
         super(context, layoutResourceId, data);

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -36,6 +37,8 @@ public class AdjustActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridView);
         gridAdapter = new GridViewAdapter(this, R.layout.grid_item_layout, ImageLoader.getImages());
         gridView.setAdapter(gridAdapter);
+        gridView.setFadingEdgeLength(150);
+
     }
 
     private void setToolbarTitle() {

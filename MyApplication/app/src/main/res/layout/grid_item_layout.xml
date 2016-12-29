@@ -11,25 +11,31 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        />
     <Button
         android:id="@+id/buttonDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
         android:background = "@drawable/roundedbutton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:onClick="deletePhoto"
-        android:text="X" />
+        android:text="X"
+        android:textSize="10dip"
+        android:textColor="#FFF"
+        android:layout_marginRight="5dp"/>
 
 
     <TextView
         android:id="@+id/text"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textSize="12sp" />
+        android:layout_height="35dip"
+        android:gravity="left"
+        android:textSize="12sp"
+        android:background="#CCFFFFFF"
+        android:padding="10dp"/>
 
 
 </RelativeLayout>
