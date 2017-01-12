@@ -76,7 +76,6 @@ public class QuizActivity extends AppCompatActivity{
         //Log.d("test","Exercise"+pos);
         intent.putExtra("oefening", "Exercise"+counter);
         startActivityForResult(intent,100);
-        addResult();
     }
 
     public void onNextClick(View v) {
@@ -111,6 +110,8 @@ public class QuizActivity extends AppCompatActivity{
         TextView text = (TextView) viewPager.findViewById(R.id.text2);
         text.setText("Answer recorded , go to the next one or record again");
 
+
+        addResult();
         text.requestLayout();
     }
 
