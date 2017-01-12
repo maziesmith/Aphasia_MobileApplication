@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="5dp">.
+
+    <TextView
+        android:id="@+id/resultCount"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentLeft="true"
+        android:text="1"
+        />
+
+    <ImageView
+        android:id="@+id/imageResult"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/resultCount"/>
+        />
+
+    <Button
+        android:id="@+id/buttonPlayResult"
+        android:background = "@drawable/roundedbutton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:text=">" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_toLeftOf="@id/buttonPlayResult"
+        android:text="0:00" />
+</RelativeLayout>
+
+

@@ -7,7 +7,6 @@
     android:padding="5dp">
     <!--android:background="@drawable/grid_color_selector"-->
 
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="150dp"
@@ -26,7 +25,6 @@
         android:textSize="10dip"
         android:textColor="#FFF" />
 
-
     <TextView
         android:id="@+id/text"
         android:layout_width="fill_parent"
@@ -36,7 +34,6 @@
         android:textStyle="bold"
         android:background="#CCFFFFFF"
         android:padding="10dp"/>
-
 
 </RelativeLayout>
 

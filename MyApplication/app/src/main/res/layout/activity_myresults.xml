@@ -7,16 +7,38 @@
     <!-- This include creates a consistent menubar over all intents -->
     <include layout="@layout/toolbar_main"/>
 
-    <!-- Here you can set all content -->
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="30"
-        android:orientation="vertical">
+    <ListView
+        android:id="@+id/results"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/emptyResults"
+        android:text="No results yet!"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Hello myresults!" />
-    </LinearLayout>
+        android:gravity="center"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/resultsSend"
+            android:layout_width="200dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="50dp"
+            android:background = "@drawable/resultbutton"
+            android:textAllCaps="false"
+            android:layout_alignParentRight="true"
+            android:onClick="sendToDoctor"
+            android:textColor="#eee"
+            android:text="send to the doctor" />
+    </RelativeLayout>
+
 </LinearLayout>

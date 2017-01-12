@@ -12,7 +12,6 @@ public class AphasiaApplication extends Application {
 
     private static Context context;
 
-
     public static Context getContext() {
         return context;
     }

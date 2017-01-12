@@ -35,7 +35,6 @@ public class AdjustActivity extends AppCompatActivity {
     private String selectedImagePath;
     private static String path = AphasiaApplication.getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath() + "/images";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

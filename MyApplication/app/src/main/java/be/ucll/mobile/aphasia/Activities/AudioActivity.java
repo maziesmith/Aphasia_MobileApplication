@@ -3,17 +3,25 @@ package be.ucll.mobile.aphasia.Activities;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import be.ucll.mobile.aphasia.Model.AppLog;
+import be.ucll.mobile.aphasia.Model.Result;
 import be.ucll.mobile.aphasia.R;
 
 public class AudioActivity extends Activity {
@@ -26,6 +34,8 @@ public class AudioActivity extends Activity {
     private int output_formats[] = { MediaRecorder.OutputFormat.MPEG_4,             MediaRecorder.OutputFormat.THREE_GPP };
     private String file_exts[] = { AUDIO_RECORDER_FILE_EXT_MP4, AUDIO_RECORDER_FILE_EXT_3GP };
     /** Called when the activity is first created. */
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +79,8 @@ public class AudioActivity extends Activity {
         recorder.setOutputFile(getFilename());
         recorder.setOnErrorListener(errorListener);
         recorder.setOnInfoListener(infoListener);
+
+        //results.add(new Result())
 
         try {
             recorder.prepare();

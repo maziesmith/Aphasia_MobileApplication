@@ -2,6 +2,8 @@ package be.ucll.mobile.aphasia.Model;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +13,23 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import be.ucll.mobile.aphasia.R;
 
 /**
- * Created by Michiel on 10/12/2016.
+ * Created by croewens on 04/01/2017.
  */
 
-public class GridViewAdapter extends ArrayAdapter {
+public class ResultAdapter extends ArrayAdapter {
     private Context context;
     private int layoutResourceId;
     private ArrayList data = new ArrayList();
 
 
-    public GridViewAdapter(Context context, int layoutResourceId, ArrayList data) {
+    public ResultAdapter(Context context, int layoutResourceId, ArrayList data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
@@ -41,24 +45,30 @@ public class GridViewAdapter extends ArrayAdapter {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
             holder = new ViewHolder();
-            holder.imageTitle = (TextView) row.findViewById(R.id.text);
-            holder.image = (ImageView) row.findViewById(R.id.image);
-            holder.deleteButton = (Button) row.findViewById(R.id.buttonDelete) ;
+            holder.imageRestult = (ImageView) row.findViewById(R.id.imageResult);
+            holder.playButton = (Button) row.findViewById(R.id.buttonPlayResult) ;
+            holder.counter = (TextView) row.findViewById(R.id.resultCount);
+            holder.duration = (TextView) row.findViewById(R.id.duration);
             row.setTag(holder);
+
         } else {
             holder = (ViewHolder) row.getTag();
         }
 
-        ImageItem item = (ImageItem) data.get(position);
-        holder.imageTitle.setText(item.getTitle());
-        holder.image.setImageBitmap(item.getImage());
-        holder.deleteButton.setTag(item.getPath());
+        Result result = (Result) data.get(position);
+        holder.imageRestult.setImageURI(Uri.parse(result.getImagePath()));
+
+        holder.duration.setText(result.getDuration());
+        //result.getImageItem().getPath()
+        holder.playButton.setTag(result.getAnswer());
+        holder.counter.setText("" + (position + 1));
         return row;
     }
 
     static class ViewHolder {
-        TextView imageTitle;
-        ImageView image;
-        Button deleteButton;
+        TextView counter;
+        ImageView imageRestult;
+        Button playButton;
+        TextView duration;
     }
 }

@@ -61,7 +61,6 @@ public class ImageLoader {
     }
 
     private static ArrayList<ImageItem>  loadFromExternal(File directory){
-
         ArrayList<ImageItem> imageItems = new ArrayList<>();
         File[] files = directory.listFiles();
 
