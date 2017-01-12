@@ -49,7 +49,7 @@ public class QuizActivity extends AppCompatActivity{
 
     //index voor files bij te houden. zou ook file skunnen tellen bvb
     static final String CONST_COUNTER = "quiz_counter";
-    private int counter = 1;
+    private int counter = -1;
     String filepath = Environment.getExternalStorageDirectory().getPath();
     File file = new File(filepath, "AudioRecorder");
 
@@ -141,8 +141,11 @@ public class QuizActivity extends AppCompatActivity{
                 results = new ArrayList<Result>();
             }
         }
-        counter = preferences.getInt(CONST_COUNTER, 1);
-        System.out.println("ONRESUME" + counter);
+
+        if (counter == -1) {
+            counter = preferences.getInt(CONST_COUNTER, 1);
+        }
+
         super.onResume();
     }
 
