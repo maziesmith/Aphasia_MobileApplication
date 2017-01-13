@@ -108,7 +108,11 @@ public class AudioActivity extends Activity {
 
     private void stopRecording(){
         if(null != recorder){
-            recorder.stop();
+            try{
+                recorder.stop();
+            }catch(RuntimeException ex){
+                //Ignore
+            }
             recorder.reset();
             recorder.release();
 
