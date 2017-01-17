@@ -24,7 +24,7 @@
         <activity android:name=".Activities.QuizActivity"></activity>
         <activity android:name=".Activities.AdjustActivity"></activity>
         <activity android:name=".Activities.ResultsActivity"></activity>
-        <activity android:name=".Activities.AudioActivity"  android:theme="@android:style/Theme.Holo.Light.Dialog"></activity>
+        <activity android:name=".Activities.AudioActivity"  android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 
 

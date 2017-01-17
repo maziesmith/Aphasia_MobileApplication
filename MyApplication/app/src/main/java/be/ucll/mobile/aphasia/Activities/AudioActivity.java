@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -119,5 +121,19 @@ public class AudioActivity extends Activity {
             recorder = null;
             this.finish();
         }
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        View view = getWindow().getDecorView();
+        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) view.getLayoutParams();
+        lp.gravity = Gravity.CENTER | Gravity.BOTTOM;
+        lp.x = 10;
+        lp.y = 10;
+        lp.width = 600;
+        lp.height = 400;
+        getWindowManager().updateViewLayout(view, lp);
     }
 }

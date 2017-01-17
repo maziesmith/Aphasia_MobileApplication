@@ -4,6 +4,7 @@ package be.ucll.mobile.aphasia.Activities;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -16,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +65,25 @@ public class QuizActivity extends AppCompatActivity{
         adapter = new CustomSwipeAdapter(this);
         viewPager.setAdapter(adapter);
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                TextView text = (TextView) findViewById(R.id.text2);
+                if(text!=null){
+                    text.setText("Record your answer, you can allways record it again if it fails");
+                    text.requestLayout();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
     }
 
     private void setToolbarTitle() {
@@ -81,6 +102,11 @@ public class QuizActivity extends AppCompatActivity{
     public void onNextClick(View v) {
         int currentItem = viewPager.getCurrentItem();
         viewPager.setCurrentItem(currentItem+1);
+        TextView text = (TextView) findViewById(R.id.text2);
+        if(text!=null){
+            text.setText("Record your answer, you can allways record it again if it fails");
+            text.requestLayout();
+        }
         if(currentItem+1 >= adapter.getCount()){
             Toast.makeText(QuizActivity.this,"You've reached the end of the test, enjoy the rest of your day!",Toast.LENGTH_LONG).show();
             Intent i = new Intent(this,HomeActivity.class);
@@ -90,6 +116,12 @@ public class QuizActivity extends AppCompatActivity{
     public void onPreviousClick(View v) {
         int currentItem = viewPager.getCurrentItem();
         viewPager.setCurrentItem(currentItem-1);
+
+        TextView text = (TextView) findViewById(R.id.text2);
+        if(text!=null){
+            text.setText("Record your answer, you can allways record it again if it fails");
+            text.requestLayout();
+        }
     }
 
     public void promptSpeechInput() {
@@ -107,13 +139,21 @@ public class QuizActivity extends AppCompatActivity{
 
     public void onActivityResult(int request_code, int result_code , Intent i){
         super.onActivityResult(request_code,result_code,i);
-        TextView text = (TextView) viewPager.findViewById(R.id.text2);
-        text.setText("Answer recorded , go to the next one or record again");
 
+        try{
+            addResult();
+            TextView text = (TextView) findViewById(R.id.text2);
+            if(text!=null){
+                text.setText("Answer recorded , go to the next one or record again");
+                text.requestLayout();
+            }
+        }catch(RuntimeException ex){
+            //Ignore
+        }
 
-        addResult();
-        text.requestLayout();
     }
+
+
 
     private void addResult() {
         String path =  (file.getAbsolutePath() + "/" + ("Exercise"+counter).replaceAll(" ","") + ".mp4");

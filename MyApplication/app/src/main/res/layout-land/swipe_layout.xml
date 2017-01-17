@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:weightSum="1">
+
+<TextView
+    android:id="@+id/image_count"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Hello World"
+    android:textSize="25dp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:layout_marginTop="25dp"/>
+
+<TextView
+    android:id="@+id/oefening"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="What do you see on the picture?"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:layout_marginTop="5dp"/>
+
+<ImageView
+
+    android:id="@+id/image_view"
+    android:layout_width="match_parent"
+    android:layout_height="300px"
+    android:layout_marginBottom="40dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+
+
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/presence_audio_online"
+            android:id="@+id/imageButton3"
+            android:layout_centerHorizontal="true"
+
+            android:onClick="onButtonClick"/>
+
+        <ImageButton
+            android:id="@+id/previousbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PREVIOUS"
+            android:onClick="onPreviousClick"
+
+            app:srcCompat="@android:drawable/ic_media_previous"
+            android:layout_marginRight="46dp"
+            android:layout_marginEnd="46dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/imageButton3"
+            android:layout_toStartOf="@+id/imageButton3"
+            android:layout_alignBottom="@+id/imageButton3" />
+
+        <ImageButton
+            android:id="@+id/nextbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NEXT"
+            android:onClick="onNextClick"
+
+            app:srcCompat="@android:drawable/ic_media_next"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageButton3"
+            android:layout_toEndOf="@+id/imageButton3"
+            android:layout_alignBottom="@+id/imageButton3" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

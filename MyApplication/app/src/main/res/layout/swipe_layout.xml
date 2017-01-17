@@ -43,20 +43,13 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/presence_audio_online"
+            app:srcCompat="@drawable/mic"
             android:id="@+id/imageButton3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="52dp"
             android:onClick="onButtonClick"/>
 
-        <TextView
-            android:id="@+id/text2"
-            android:text="Record your answer, you can allways record it again if it fails"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="90dp"
-            ></TextView>
+
 
         <ImageButton
             android:id="@+id/nextbutton"
