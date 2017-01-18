@@ -141,6 +141,7 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     private void sendToDoctor() {
+
        if (results == null || results.isEmpty()) {
             Toast.makeText(this,"No results yet!",Toast.LENGTH_LONG).show();
             return;
@@ -206,6 +207,15 @@ public class ResultsActivity extends AppCompatActivity {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Aphasia Results");
         emailIntent.putExtra(Intent.EXTRA_TEXT, output);
         startActivity(emailIntent);
+
+        results = new ArrayList<>();
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(CONST_RESULTS, new Gson().toJson(results));
+        editor.commit();
+
+        showResults();
     }
 
     @Override
